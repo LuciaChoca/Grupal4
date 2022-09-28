@@ -1,12 +1,21 @@
-let search = document.getElementById("inputBuscar");
-let button = document.getElementById("btnBuscar");
-let MOVIES_URL = "https://japceibal.github.io/japflix_api/movies-data.json";
+let btnSearch = document.getElementById("btnBuscar");
+let inputSearch = document.getElementById("inputBuscar");
+let URL_DATA = "https://japceibal.github.io/japflix_api/movies-data.json"
+let result = {};
 
+document.addEventListener("DOMContentLoaded", e => {
+    fetchData();
+})
+
+btnSearch.addEventListener("click", e => {
+    if (inputSearch.value.length > 0) {
+        searchMovie();
+    }
+})
 
 const fetchData = async () => {
-    const result = {};
     try {
-        const response = await fetch(MOVIES_URL);
+        const response = await fetch(URL_DATA);
         if (response.ok) {
             result.data = await response.json();
             result.status = "ok";
@@ -18,29 +27,25 @@ const fetchData = async () => {
         result.status = 'error';
         result.data = error;
     }
-    console.log(result);
-    return result;
+    return result;  
 }
 
-function searchMovies() {
-   const {title} = data;
-   console.log(title);
-    
-   
-}
+/* function searchMovie(){
+    let array = [];
+        for(let i = 0; i < result.data.length; i++){
+        let category = result.data[i];
+        let valueInclude = (category.title).includes(inputSearch.value, category)
+        if (valueInclude) {
+        console.log(category.title); 
+        } 
+}}*/ 
 
-
-
-document.addEventListener("DOMContentLoaded", e => {
-    fetchData();
-    
-
-    button.addEventListener("click", e => {
-        if (search.value.length > 0){
-            searchMovies();
-        }
-    })
-
-
-})
-
+function searchMovie(){
+    let array = [];
+        for(let i = 0; i < result.data.length; i++){
+        let category = result.data[i];
+        let valueInclude = (category.title).includes(inputSearch.value, category)
+        if (valueInclude) {
+        console.log(category.title); 
+        } 
+}}
