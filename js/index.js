@@ -30,34 +30,31 @@ function searchMovie() {
     showMovie(arraySearch);
 }
 
-function showMovie(showArray){
-let htmlContentToAppend = "";
-    for(let i = 0; i < showArray.length; i++){
-    let movies = showArray[i];
-    console.log(movies.title);
-    htmlContentToAppend += `
-    <div class="list-group-item list-group-item-action " id="listComment">
-    <div class="d-flex w-100 justify-content-between">
-    <div class="mb-1">
-        <h5>${movies.title}</h5>
-        <p>${movies.tagline}</p>
-    </div>
-    </div>
-    </div>
-    `
-    document.getElementById("lista").innerHTML = htmlContentToAppend; 
-}}
-
-
-for (let i = 0; i < prodcutCommentArray.length; i++) {
-    let productData = prodcutCommentArray[i];
-    htmlContentToAppend += `
-    <p><b>${productData.user}</b> ${productData.description}</p>
-    <p>${productData.dateTime} `
-    for (let x = 0; x < productData.score ; x++) {
-    htmlContentToAppend += `<span class="fa fa-star score"></span>`
-    }       
-    for (let x = 0; x < (5 - productData.score); x++) {
-    htmlContentToAppend += `<span class="fa fa-star "></span>`
-    } 
+function showMovie(showArray) {
+  let htmlContentToAppend = "";
+  htmlContentToAppend += `
+  <div class="list-group-item list-group-item-action " id="listComment">
+     <div class="d-flex w-100 justify-content-between">`
+      for (let i = 0; i < showArray.length; i++) {
+       let movies = showArray[i];
+        console.log(movies.title);
+        htmlContentToAppend += `
+         <div class="mb-1">
+          <h5>${movies.title}</h5>
+          <p>${movies.tagline}</p>
+          <p>`
+            for (let x = 0; x < (parseInt(movies.vote_average/2)) ; x++) {
+             htmlContentToAppend += `<span class="fa fa-star checked"></span>`
+            }       
+            for (let x = 0; x < (5 - (parseInt(movies.vote_average/2))); x++) {
+             htmlContentToAppend += `<span class="fa fa-star"></span>`
+            } 
+        `</p>
+       </div>`;
   }
+ ` </div>
+  </div>`;
+
+  document.getElementById("lista").innerHTML = htmlContentToAppend;
+}
+
