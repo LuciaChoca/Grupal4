@@ -27,7 +27,7 @@ function searchMovie() {
         tagline.toLowerCase().includes((inputSearch.value).toLowerCase()) ||
         genres.some(({ name }) => name.toLocaleLowerCase().includes(inputSearch.value)))
     showMovie(arraySearch);
-
+    Stars2(arraySearch)
 }
 
 function showMovie(showArray) {
@@ -43,7 +43,7 @@ function showMovie(showArray) {
         <div class="mb-1">
             <h5>${movies.title} </h5>
             <p>${movies.tagline}</p>
-            <div id="stars" "stars(${movies.vote_average})"></div>
+            <div id="${movies.id}"></div>
         </div>
     </div>
     </div>
@@ -51,20 +51,46 @@ function showMovie(showArray) {
     </div>  
         `
         document.getElementById("lista").innerHTML = htmlContentToAppend;
-
+     //  Stars(movies.vote_average, movies.id)
     }
-
+ 
 }
 
-function stars(aa) {
-    let htmlContentToAppend = "";
-    console.log(aa.vote_average)
-        varm = parseInt(aa / 2)
+/*function Stars(vote_average, id) {
+    let htmlContentToAppend1 = "";
+
+ 
+        //let aa = showArray[i];
+       // console.log(aa.vote_average)
+
+
+        varm = parseInt(vote_average / 2)
         for (let x = 0; x < varm; x++) {
-            htmlContentToAppend += `<span class="fa fa-star checked"></span>`
+            htmlContentToAppend1 += `<span class="fa fa-star checked"></span>`
         }
         for (let x = 0; x < (5 - varm); x++) {
-            htmlContentToAppend += `<span class="fa fa-star"></span>`
+            htmlContentToAppend1 += `<span class="fa fa-star"></span>`
         }
+        document.getElementById(id).innerHTML = htmlContentToAppend1;
+    }*/
+
+    function Stars2(showArray) {
         
+        for (let i = 0; i < showArray.length; i++) {
+            let htmlContentToAppend1 = "";
+            let movie = showArray[i];
+     
+            //let aa = showArray[i];
+            console.log(movie.vote_average)
+    
+    
+            varm = parseInt(movie.vote_average / 2)
+            for (let x = 0; x < varm; x++) {
+                htmlContentToAppend1 += `<span class="fa fa-star checked"></span>`
+            }
+            for (let x = 0; x < (5 - varm); x++) {
+                htmlContentToAppend1 += `<span class="fa fa-star"></span>`
+            }
+            document.getElementById(movie.id).innerHTML = htmlContentToAppend1;
+        }
     }
