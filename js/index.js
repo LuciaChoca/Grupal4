@@ -32,17 +32,15 @@ function searchMovie() {
         tagline.toLowerCase().includes((inputSearch.value).toLowerCase()) ||
         genres.some(({ name }) => name.toLocaleLowerCase().includes(inputSearch.value)))
     showMovie(arraySearch);
-    showMovies(arraySearch);
     Stars2(arraySearch)
 }
 
 function showMovie(showArray) {
     let htmlContentToAppend = "";
-    let aa = "";
     for (let i = 0; i < showArray.length; i++) {
         let movies = showArray[i];
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action cursor-active" onclick="">
+        <div class="list-group-item list-group-item-action cursor-active">
         <div class="row">
         <div class="col">
         <div class="d-flex w-100 justify-content-between">
@@ -57,10 +55,9 @@ function showMovie(showArray) {
     </div>  
 
         `
+        document.getElementById("titleCanva").innerHTML = movies.title;
+        document.getElementById("overviewCanva").innerHTML = movies.overview;
         document.getElementById("lista").innerHTML = htmlContentToAppend;
-        
-        
-       
         //  Stars(movies.vote_average, movies.id)
     }
 
@@ -78,6 +75,7 @@ function showMovies(arraySearch) {
         `
         document.getElementById("title").innerHTML = htmlContentToAppend5;
    });
+}
     /*for (let i = 0; i < showArray.length; i++) {
         let movies = showArray[i];
         htmlContentToAppend = `
@@ -93,35 +91,33 @@ function showMovies(arraySearch) {
         //  Stars(movies.vote_average, movies.id)
     }*/
     
-}
-/*function Stars(vote_average, id) {
-    let htmlContentToAppend1 = "";
-
- 
-        //let aa = showArray[i];
-       // console.log(aa.vote_average)
-
-
-        varm = parseInt(vote_average / 2)
-        for (let x = 0; x < varm; x++) {
-            htmlContentToAppend1 += `<span class="fa fa-star checked"></span>`
-        }
-        for (let x = 0; x < (5 - varm); x++) {
-            htmlContentToAppend1 += `<span class="fa fa-star"></span>`
-        }
-        document.getElementById(id).innerHTML = htmlContentToAppend1;
-    }*/
 
 function Stars2(showArray) {
 
     for (let i = 0; i < showArray.length; i++) {
         let htmlContentToAppend1 = "";
         let movie = showArray[i];
-
         //let aa = showArray[i];
         console.log(movie.vote_average)
+        varm = parseInt(movie.vote_average / 2)
+        for (let x = 0; x < varm; x++) {
+            htmlContentToAppend1 += `<span class="fa fa-star checked"></span>`
+        }
+        for (let x = 0; x < (5 - varm); x++) {
+            htmlContentToAppend1 += `<span class="fa fa-star"></span>`
+        }
+        document.getElementById(movie.id).innerHTML = htmlContentToAppend1;
+    
+    }
+}
 
+function showCanva(showArray) {
 
+    for (let i = 0; i < showArray.length; i++) {
+        let htmlContentToAppend1 = "";
+        let movie = showArray[i];
+        //let aa = showArray[i];
+        console.log(movie.vote_average)
         varm = parseInt(movie.vote_average / 2)
         for (let x = 0; x < varm; x++) {
             htmlContentToAppend1 += `<span class="fa fa-star checked"></span>`
@@ -134,22 +130,38 @@ function Stars2(showArray) {
     }
 }
        
-
+function showInfo(showArray){  
+    let htmlContentToAppend = "";
+    for (let i = 0; i < showArray.length; i++) {
+        let movie = showArray[i];
+        htmlContentToAppend = 
+        `${movie.title} ${movie.overview} <hr> ${movie.genres.name}`;       
+    }
+    document.getElementById("offcanvas-info").innerHTML = htmlContentToAppend;
+}
 
 // tendria que ser una funcion show, que cuando clickeamos el div aparezca el canva
 // y un add even listener que cuando toque el div me meta la funcion 
 //ONCLICK EN HTML QUE LLAME LA FUNCION
 
-/*
-canva.addEventListener("click", canvaBox, false);
+//canva.addEventListener("click", canvaBox, false);
 
-function canvaBox(event) {
-  let warn = `${moviesArray.title} `;
-  let warn2 = ` ${moviesArray.overview} ` ;
+/*
+function canvaBox(showArray) {
+
+    console.log(showArray)
+    let warn = `${showArray.title} `;
+    console.log(warn)
+/*  let warn2 = ` ${moviesArray.overview} ` ;
   document.getElementById("title").innerHTML = warn;
   document.getElementById("overview").innerHTML = warn2;
   event.preventDefault();
-}
+
+        document.getElementById("titleCanva").innerHTML = showArray.title;
+        document.getElementById("overviewCanva").innerHTML = showArray.overview;
+    
+*/
+
 
 function openNav() {
     document.getElementById("boton").style.width = "250px";
@@ -160,10 +172,11 @@ function closeNav() {
     document.getElementById("boton").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 }
-*/
+/*
 let date = document.getElementById("release_date");
 let=htmlContentToAppend;
 function year(){
 date.substring(0,4);
 document.getElementById(relase_date.id).innerHTML = htmlContentToAppend;
-}
+}*/
+
