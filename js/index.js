@@ -2,7 +2,6 @@ let btnSearch = document.getElementById("btnBuscar");
 let inputSearch = document.getElementById("inputBuscar");
 let URL_DATA = "https://japceibal.github.io/japflix_api/movies-data.json"
 let moviesArray = [];
-
 let canva = document.getElementById("boton");
 
 document.addEventListener("DOMContentLoaded", e => {
@@ -43,57 +42,40 @@ function showMovie(showArray) {
         let movies = showArray[i];
         htmlContentToAppend += `
         <div class="list-group-item list-group-item-action cursor-active" onclick="">
-        <div class="row">
-        <div class="col">
-        <div class="d-flex w-100 justify-content-between">
-        <div class="mb-1">
-            <h5>${movies.title} </h5>
-            <p>${movies.tagline}</p>
-            <div id="${movies.id}"></div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>  
-
-        `
+           <div class="row">
+               <div class="col">
+                   <div class="d-flex w-100 justify-content-between">
+                      <div class="mb-1">
+                          <h5>${movies.title} </h5>
+                          <p>${movies.tagline}</p>
+                          <div id="${movies.id}"></div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>`
         document.getElementById("lista").innerHTML = htmlContentToAppend;
         
-        
-       
         //  Stars(movies.vote_average, movies.id)
+
+        
     }
+    showInfo(showArray);
+
 
 }
 
-function showMovies(arraySearch) {
-    let htmlContentToAppend5 = "";
-   arraySearch.forEach(element => {
-    htmlContentToAppend5 = `
-            <h5>${element.title} </h5>
-           
-            <p>${element.tagline}</p>
-           
-            
-        `
-        document.getElementById("title").innerHTML = htmlContentToAppend5;
-   });
-    /*for (let i = 0; i < showArray.length; i++) {
-        let movies = showArray[i];
-        htmlContentToAppend = `
-            <h5>${movies.title} </h5>
-            <p>${movies.tagline}</p>
-            <div id="${movies.id}"></div>
-            
-        `
-        document.getElementById("title").innerHTML = htmlContentToAppend;
-        
-        
-       
-        //  Stars(movies.vote_average, movies.id)
-    }*/
-    
+
+function showInfo(showArray){  
+    let htmlContentToAppend = "";
+    for (let i = 0; i < showArray.length; i++) {
+        let movie = showArray[i];
+        htmlContentToAppend = 
+        `${movie.title} ${movie.overview} <hr> ${movie.genres.name}`;       
+    }
+    document.getElementById("offcanvas-info").innerHTML = htmlContentToAppend;
 }
+
 /*function Stars(vote_average, id) {
     let htmlContentToAppend1 = "";
 
@@ -110,7 +92,9 @@ function showMovies(arraySearch) {
             htmlContentToAppend1 += `<span class="fa fa-star"></span>`
         }
         document.getElementById(id).innerHTML = htmlContentToAppend1;
-    }*/
+    }
+*/
+
 
 function Stars2(showArray) {
 
@@ -162,8 +146,8 @@ function closeNav() {
 }
 */
 let date = document.getElementById("release_date");
-let=htmlContentToAppend;
-function year(){
-date.substring(0,4);
-document.getElementById(relase_date.id).innerHTML = htmlContentToAppend;
+let = htmlContentToAppend;
+function year() {
+  date.substring(0, 4);
+  document.getElementById(relase_date.id).innerHTML = htmlContentToAppend;
 }
