@@ -161,3 +161,9 @@ function closeNav() {
     document.getElementById("main").style.marginLeft = "0";
 }
 */
+let date = document.getElementById("release_date");
+let=htmlContentToAppend;
+function year(){
+date.substring(0,4);
+document.getElementById(relase_date.id).innerHTML = htmlContentToAppend;
+}
