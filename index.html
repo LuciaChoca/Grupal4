@@ -9,7 +9,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
-  
+
 </head>
 
 <body class="bg-dark">
@@ -24,9 +24,35 @@
       </div>
     </div>
 
-    <div class="album">
-      <ul class="list-group container" id="lista">
-      </ul>
+    <div class="album" id="boton">
+      <ul>
+      <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasTop" role="button"
+        aria-controls="offcanvasTop" id="lista">
+      </a>
+      <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="title"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div>
+            
+          </div>
+          <div class="dropdown-update mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+              data-bs-toggle="dropdown">
+              More
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li class="dropdown-item">Year:</li>
+              <li class="dropdown-item">Runtime:</li>
+              <li class="dropdown-item">Budget:</li>
+              <li class="dropdown-item">Revenue:</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </ul>
     </div>
   </main>
 
