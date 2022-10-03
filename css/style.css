@@ -31,6 +31,23 @@ main {
     color: white;
 }
 
+.offcanvas{
+    height: 250px;
+}       
 
+.btn-secondary {
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
 
+.horizontal{
+    margin:0;
+    padding:0;
+}
+
+.horizontal li{
+    display:block;
+    float:left;
+}
  

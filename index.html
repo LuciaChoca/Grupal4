@@ -24,9 +24,7 @@
       </div>
     </div>
     <div class="album" id="boton">
-      <p class="list-group container" data-bs-toggle="offcanvas" href="#offcanvasTop" role="button"
-        aria-controls="offcanvasTop" id="lista">
-    </p>
+      <p class="list-group container" data-bs-toggle="offcanvas" href="#offcanvasTop" role="button" aria-controls="offcanvasTop" id="lista"></p>
       <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="titleCanva"></h5>
@@ -34,16 +32,15 @@
         </div>
         <div class="offcanvas-body">
           <p id="overviewCanva"></p>
-          <p id="genresListCanva"></p>
-          <div class="dropdown-update mt-1">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-              More
-            </button>
+          <ul class="horizontal" id="genresListCanva"></ul>
+        </div>
+          <div class="dropdown-update mt-3">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">More</button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li class="dropdown-item" id="yearCanva">Year: </li>
-              <li class="dropdown-item" id="runtimeCanva">Runtime: </li>
-              <li class="dropdown-item" id="budgetCanva">Budget: </li>
-              <li class="dropdown-item" id="revenueCanva">Revenue: </li>
+              <li class="dropdown-item" id="yearCanva"></li>
+              <li class="dropdown-item" id="runtimeCanva"> </li>
+              <li class="dropdown-item" id="budgetCanva"></li>
+              <li class="dropdown-item" id="revenueCanva"></li>
             </ul>
           </div>
         </div>

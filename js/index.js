@@ -32,7 +32,7 @@ function searchMovie() {
         tagline.toLowerCase().includes((inputSearch.value).toLowerCase()) ||
         genres.some(({ name }) => name.toLocaleLowerCase().includes(inputSearch.value)))
     showMovie(arraySearch);
-    Stars2(arraySearch)
+    Stars2(arraySearch);
 }
 
 function showMovie(showArray) {
@@ -53,17 +53,13 @@ function showMovie(showArray) {
     </div>
     </div>
     </div>  
-
         `
         document.getElementById("lista").innerHTML = htmlContentToAppend;
 
     }
-
 }
 
 function showMovies(arraySearch) {
-
-
     let htmlContentToAppend5 = "";
    arraySearch.forEach(element => {
     htmlContentToAppend5 = `
@@ -82,8 +78,6 @@ function Stars2(showArray) {
     for (let i = 0; i < showArray.length; i++) {
         let htmlContentToAppend1 = "";
         let movie = showArray[i];
-        //let aa = showArray[i];
-        console.log(movie.vote_average)
         varm = parseInt(movie.vote_average / 2)
         for (let x = 0; x < varm; x++) {
             htmlContentToAppend1 += `<span class="fa fa-star checked"></span>`
@@ -105,13 +99,13 @@ function showCanva(valueData) {
             document.getElementById("overviewCanva").innerHTML = movie.overview;
             for (let x = 0; x < movie.genres.length; x++){
                 let genresData = movie.genres[x];
-                listGenres = `${genresData.name} - `
-                document.getElementById("genresListCanva").innerHTML += listGenres
+                listGenres += `<li>${genresData.name} - </li>`
+                document.getElementById("genresListCanva").innerHTML = listGenres
             }
-            document.getElementById("yearCanva").innerHTML += (movie.release_date).substring(0, 4);
-            document.getElementById("runtimeCanva").innerHTML += movie.runtime;
-            document.getElementById("budgetCanva").innerHTML += movie.budget;
-            document.getElementById("revenueCanva").innerHTML += movie.revenue;
+            document.getElementById("yearCanva").innerHTML = "Year:" + (movie.release_date).substring(0, 4);
+            document.getElementById("runtimeCanva").innerHTML = "Runtime:" + movie.runtime;
+            document.getElementById("budgetCanva").innerHTML = "Budget: " + movie.budget;
+            document.getElementById("revenueCanva").innerHTML = "Revenue:" + movie.revenue;
         }
         }
 }
@@ -126,13 +120,4 @@ function showInfo(showArray){
     document.getElementById("offcanvas-info").innerHTML = htmlContentToAppend;
 }
 
-function openNav() {
-    document.getElementById("boton").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-}
-
-function closeNav() {
-    document.getElementById("boton").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-}
 
