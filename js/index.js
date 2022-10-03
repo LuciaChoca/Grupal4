@@ -40,7 +40,7 @@ function showMovie(showArray) {
     for (let i = 0; i < showArray.length; i++) {
         let movies = showArray[i];
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action cursor-active">
+        <div class="list-group-item list-group-item-action cursor-active" onclick="showCanva(${movies.id})">
         <div class="row">
         <div class="col">
         <div class="d-flex w-100 justify-content-between">
@@ -55,15 +55,15 @@ function showMovie(showArray) {
     </div>  
 
         `
-        document.getElementById("titleCanva").innerHTML = movies.title;
-        document.getElementById("overviewCanva").innerHTML = movies.overview;
         document.getElementById("lista").innerHTML = htmlContentToAppend;
-        //  Stars(movies.vote_average, movies.id)
+
     }
 
 }
 
 function showMovies(arraySearch) {
+
+
     let htmlContentToAppend5 = "";
    arraySearch.forEach(element => {
     htmlContentToAppend5 = `
@@ -76,21 +76,6 @@ function showMovies(arraySearch) {
         document.getElementById("title").innerHTML = htmlContentToAppend5;
    });
 }
-    /*for (let i = 0; i < showArray.length; i++) {
-        let movies = showArray[i];
-        htmlContentToAppend = `
-            <h5>${movies.title} </h5>
-            <p>${movies.tagline}</p>
-            <div id="${movies.id}"></div>
-            
-        `
-        document.getElementById("title").innerHTML = htmlContentToAppend;
-        
-        
-       
-        //  Stars(movies.vote_average, movies.id)
-    }*/
-    
 
 function Stars2(showArray) {
 
@@ -111,23 +96,24 @@ function Stars2(showArray) {
     }
 }
 
-function showCanva(showArray) {
-
-    for (let i = 0; i < showArray.length; i++) {
-        let htmlContentToAppend1 = "";
-        let movie = showArray[i];
-        //let aa = showArray[i];
-        console.log(movie.vote_average)
-        varm = parseInt(movie.vote_average / 2)
-        for (let x = 0; x < varm; x++) {
-            htmlContentToAppend1 += `<span class="fa fa-star checked"></span>`
+function showCanva(valueData) {
+    let listGenres="";
+    for (let i = 0; i < moviesArray.length; i++) {
+        let movie = moviesArray[i];
+        if (valueData == movie.id){
+            document.getElementById("titleCanva").innerHTML = movie.title;
+            document.getElementById("overviewCanva").innerHTML = movie.overview;
+            for (let x = 0; x < movie.genres.length; x++){
+                let genresData = movie.genres[x];
+                listGenres = `${genresData.name} - `
+                document.getElementById("genresListCanva").innerHTML += listGenres
+            }
+            document.getElementById("yearCanva").innerHTML += (movie.release_date).substring(0, 4);
+            document.getElementById("runtimeCanva").innerHTML += movie.runtime;
+            document.getElementById("budgetCanva").innerHTML += movie.budget;
+            document.getElementById("revenueCanva").innerHTML += movie.revenue;
         }
-        for (let x = 0; x < (5 - varm); x++) {
-            htmlContentToAppend1 += `<span class="fa fa-star"></span>`
         }
-        document.getElementById(movie.id).innerHTML = htmlContentToAppend1;
-    
-    }
 }
        
 function showInfo(showArray){  
@@ -140,29 +126,6 @@ function showInfo(showArray){
     document.getElementById("offcanvas-info").innerHTML = htmlContentToAppend;
 }
 
-// tendria que ser una funcion show, que cuando clickeamos el div aparezca el canva
-// y un add even listener que cuando toque el div me meta la funcion 
-//ONCLICK EN HTML QUE LLAME LA FUNCION
-
-//canva.addEventListener("click", canvaBox, false);
-
-/*
-function canvaBox(showArray) {
-
-    console.log(showArray)
-    let warn = `${showArray.title} `;
-    console.log(warn)
-/*  let warn2 = ` ${moviesArray.overview} ` ;
-  document.getElementById("title").innerHTML = warn;
-  document.getElementById("overview").innerHTML = warn2;
-  event.preventDefault();
-
-        document.getElementById("titleCanva").innerHTML = showArray.title;
-        document.getElementById("overviewCanva").innerHTML = showArray.overview;
-    
-*/
-
-
 function openNav() {
     document.getElementById("boton").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
@@ -172,11 +135,4 @@ function closeNav() {
     document.getElementById("boton").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
 }
-/*
-let date = document.getElementById("release_date");
-let=htmlContentToAppend;
-function year(){
-date.substring(0,4);
-document.getElementById(relase_date.id).innerHTML = htmlContentToAppend;
-}*/
 

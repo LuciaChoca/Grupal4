@@ -34,16 +34,16 @@
         </div>
         <div class="offcanvas-body">
           <p id="overviewCanva"></p>
-          <div class="dropdown-update mt-3">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-              data-bs-toggle="dropdown">
+          <p id="genresListCanva"></p>
+          <div class="dropdown-update mt-1">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
               More
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li class="dropdown-item">Year:<a><div onclick=year()></div> </a></li>
-              <li class="dropdown-item">Runtime:</li>
-              <li class="dropdown-item">Budget:</li>
-              <li class="dropdown-item">Revenue:</li>
+              <li class="dropdown-item" id="yearCanva">Year: </li>
+              <li class="dropdown-item" id="runtimeCanva">Runtime: </li>
+              <li class="dropdown-item" id="budgetCanva">Budget: </li>
+              <li class="dropdown-item" id="revenueCanva">Revenue: </li>
             </ul>
           </div>
         </div>
